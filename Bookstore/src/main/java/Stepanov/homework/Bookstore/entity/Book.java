@@ -3,13 +3,19 @@ package Stepanov.homework.Bookstore.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
+@ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Book {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,9 +23,9 @@ public class Book {
     @Column(nullable = false)
     private String title;
 
-    @OneToOne
-    @JoinColumn(nullable = false)
-    private Author author;
+    @ManyToMany (mappedBy = "bookSet", cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+                 fetch = FetchType.EAGER)
+    Set<Author> authorSet = new HashSet<>();
 
     @Column
     private Integer year_of_publication;
@@ -31,17 +37,6 @@ public class Book {
     private Integer price;
 
     @OneToMany(mappedBy = "book", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<OrderingDetails> orderingDetails;
-
-    @Override
-    public String toString() {
-        return "Book{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", author=" + author +
-                ", year_of_publication=" + year_of_publication +
-                ", pages=" + pages +
-                ", price=" + price +
-                '}';
-    }
 }

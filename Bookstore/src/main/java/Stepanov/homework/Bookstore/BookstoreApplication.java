@@ -14,6 +14,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -30,27 +32,65 @@ public class BookstoreApplication {
         OrderService orderService = context.getBean(OrderService.class);
         OrderingDetailsService orderingDetailsService = context.getBean(OrderingDetailsService.class);
 
+//        authorService.deleteAuthorById(3L);
+
         Author author = new Author();
-        author.setSurname("Petrov");
-        author.setName("Ivan");
-        author.setMiddle_name("Ivanovich");
-        authorService.createAuthor(author);
+        author.setSurname("Petrov2");
+        author.setName("Ivan2");
+        author.setMiddle_name("Ivanovich2");
+//        authorService.createAuthor(author);
+
+
+        Author author2= Author.builder()
+                .surname("Kozlov")
+                .name("Igor")
+                .middle_name("Petrovich")
+                .build();
+//        authorService.createAuthor(author2);
 
         Book book = new Book();
-        book.setTitle("Summer");
-        book.setAuthor(authorService.getAuthorById(1L));
-        book.setYear_of_publication(2002);
-        book.setPages(220);
-        book.setPrice(600);
-        bookService.createBook(book);
+        book.setTitle("Spring");
+//        book.setAuthor(authorService.getAuthorById(2L));
+        book.setAuthorSet(Set.of(authorService.findById(1L)));
+        book.setYear_of_publication(2004);
+        book.setPages(250);
+        book.setPrice(700);
+//        bookService.createBook(book);
 
-        BookWarehouse bookWarehouse = new BookWarehouse();
-        bookWarehouse.setBook(bookService.getBookById(1L));
-        bookWarehouse.setBalance(4);
-        bookWarehouseService.createBookWarehouse(bookWarehouse);
+        Book book1 = Book.builder()
+                .title("Winter")
+                .pages(300)
+//                .author(authorService.getAuthorById(1L))
+                .authorSet(Set.of(authorService.findById(2L)))
+                .price(500)
+                .year_of_publication(2006)
+                .build();
+//        System.out.println("book1: " + book1);
+//        bookService.createBook(book1);
 
+//        BookWarehouse bookWarehouse = new BookWarehouse();
+//        bookWarehouse.setBook(bookService.getBookById(1L));
+//        bookWarehouse.setBalance(3);
 
-        //   buyerService.createBuyer(new Buyer("Kozlov", "Vlad", "Ivanovich", LocalDate.of(1999, 1, 1)));
+//        bookWarehouseService.deleteBookById(3L);
+
+//        bookWarehouseService.createBookWarehouse(BookWarehouse.builder()
+//                .book(bookService.getBookById(1L))
+//                .balance(5)
+//                .build());
+
+//        log.info("books: {}", bookService.getBooks());
+        Book book2 = bookService.findById(1L);
+        System.out.println("id: "+ book2.getId());
+        System.out.println("pages: "+ book2.getPages());
+        System.out.println("pages2: "+ book2.getPrice());
+        System.out.println("page3: "+ book2.getTitle());
+        System.out.println("page4: "+ book2.getYear_of_publication());
+        System.out.println("page5: "+ book2.getAuthorSet());
+        System.out.println("book2: "+ book2);
+        log.info("book: {}", bookService.findById(1L));
+        log.info("books: {}", bookService.findAll());
+
 //        buyerService.createBuyer(Buyer.builder()
 //                .surname("Kozlov")
 //                .name("Vlad")

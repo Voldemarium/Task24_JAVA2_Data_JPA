@@ -9,6 +9,10 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Buyer {
 
     @Id
@@ -28,18 +32,7 @@ public class Buyer {
     private LocalDate birth_date;
 
     @OneToMany(mappedBy = "buyer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ToString.Exclude
     private List<Ordering> orderingList;
-
-    @Override
-    public String toString() {
-        return "Buyer{" +
-                "id=" + id +
-                ", surname='" + surname + '\'' +
-                ", name='" + name + '\'' +
-                ", middle_name='" + middle_name + '\'' +
-                ", birth_date=" + birth_date +
-                '}';
-    }
-
 
 }

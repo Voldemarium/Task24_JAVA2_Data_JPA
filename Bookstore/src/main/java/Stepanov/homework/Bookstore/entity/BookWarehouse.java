@@ -7,7 +7,9 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-//@RequiredArgsConstructor
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class BookWarehouse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,4 +22,12 @@ public class BookWarehouse {
     @Column
     private Integer balance;
 
+    @Override
+    public String toString() {
+        return "BookWarehouse{" +
+                "id=" + id +
+                ", book=" + book.getId() +
+                ", balance=" + balance +
+                '}';
+    }
 }

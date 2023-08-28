@@ -4,6 +4,7 @@ import Stepanov.homework.Bookstore.entity.Buyer;
 import Stepanov.homework.Bookstore.repository.BuyerRepository;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
@@ -23,7 +24,7 @@ public class BuyerService {
         return buyerRepository.findAll();
     }
 
-    public Buyer getBuyerById(Long id) {
-        return buyerRepository.getById(id) ;
+    public Buyer findBuyerById(Long id) {
+        return buyerRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 }

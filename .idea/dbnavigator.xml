@@ -23,7 +23,7 @@
     <open-files>
       <object connection-id="d36ca420-4faf-4f60-9e9a-7d1135d3346d" object-ref="schemas/public/tables/author" />
       <object connection-id="d36ca420-4faf-4f60-9e9a-7d1135d3346d" object-ref="schemas/public/tables/book" />
-      <object connection-id="d36ca420-4faf-4f60-9e9a-7d1135d3346d" object-ref="schemas/public/tables/book_warehouse" />
+      <object connection-id="d36ca420-4faf-4f60-9e9a-7d1135d3346d" object-ref="schemas/public/tables/book_author" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
@@ -31,7 +31,9 @@
     <filter-actions connection-id="d36ca420-4faf-4f60-9e9a-7d1135d3346d" dataset="public.ordering_details" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="d36ca420-4faf-4f60-9e9a-7d1135d3346d" dataset="public.buyer" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="d36ca420-4faf-4f60-9e9a-7d1135d3346d" dataset="public.book" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="d36ca420-4faf-4f60-9e9a-7d1135d3346d" dataset="public.book_author" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="d36ca420-4faf-4f60-9e9a-7d1135d3346d" dataset="public.author" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="d36ca420-4faf-4f60-9e9a-7d1135d3346d" dataset="public.author_book_list" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="d36ca420-4faf-4f60-9e9a-7d1135d3346d" dataset="public.book_warehouse" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
@@ -50,7 +52,7 @@
           <description value="" />
           <database-type value="POSTGRES" />
           <config-type value="BASIC" />
-          <database-version value="14.8" />
+          <database-version value="14.9" />
           <driver-source value="BUNDLED" />
           <driver-library value="" />
           <driver value="" />

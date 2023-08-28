@@ -4,6 +4,7 @@ import Stepanov.homework.Bookstore.entity.Ordering;
 import Stepanov.homework.Bookstore.repository.OrderingRepository;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
@@ -23,7 +24,7 @@ public class OrderService {
         return orderingRepository.findAll();
     }
 
-    public Ordering getOrderingById(Long id) {
-        return orderingRepository.getById(id) ;
+    public Ordering findOrderingById(Long id) {
+        return orderingRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 }
